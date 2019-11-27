@@ -1,54 +1,56 @@
 <template>
-    <div class="content_back">
-        <div>
-            <font v-if="commendData.mark" color="#EE0000">[置顶]</font>
-            <div class="title"> {{ commendData.title }} </div>
-        </div>
-        
-        <div class="content"> {{ commendData.content }}  </div>
-        <div class="time">   Posted by Gityuan on {{ commendData.time }}  </div>
+  <div class="item_content_back">
+    <div>
+      <font v-if="commendData.mark" color="#EE0000">[置顶]</font>
+      <div class="item-title">{{ commendData.title }}</div>
     </div>
+
+    <div class="item-content">{{ commendData.content }}</div>
+    <div class="item-time">Posted by Gityuan on {{ commendData.time }}</div>
+  </div>
 </template>
 <script>
 export default {
-    name: 'HomeCommendItem',
-    props: {
-        commendData: {
-            type: Object,
-            default:null,
-        },
-        title: String,
+  name: "HomeCommendItem",
+  props: {
+    commendData: {
+      type: Object,
+      default: null
     },
-    data() {
-        return {
-           mcommendData:this.commendData 
-        }
-    },
-}
+    title: String
+  },
+  data() {
+    return {
+      mcommendData: this.commendData
+    };
+  }
+};
 </script>
 
-<style scoped>
-.content_back{
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-    align-items: flex-start;
-    padding: 30px 150px 0 30px;
+<style lang="less" scoped>
+.item_content_back {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  padding: 30px 150px 0 30px;
+  box-sizing: border-box;
 
-}
-.content , .time { 
+  .item-content {
     padding-top: 8px;
     font-size: 16px;
     color: #999999;
-}
-.time{
-   padding-top: 10px;
+    box-sizing: border-box;
+  }
+  .item-time {
+    box-sizing: border-box;
+    padding-top: 10px;
     font-size: 18px;
-    color: #666; 
-}
-.title{
+    color: #666;
+  }
+  .item-title {
     font-size: 30px;
     color: #333;
+  }
 }
-
 </style>
