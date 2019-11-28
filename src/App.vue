@@ -28,6 +28,7 @@ export default {
   },
   mounted() {
     let routerPath =  this.$router.history.current.path;
+    console.log(this.$router);
     switch (routerPath) {
       case "/":
         this.currentIndex = 1;
@@ -42,9 +43,12 @@ export default {
          this.currentIndex = 3;
         break;
       default:
-         this.currentIndex = 1;
+         this.currentIndex = 4;
         break;
     }
+  },
+  created() {
+  
   },
 };
 </script>
