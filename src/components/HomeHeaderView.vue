@@ -1,5 +1,6 @@
 <template>
   <div class="home_header_content"  v-bind:class="{home_header_content_s:isShowSelect(3)}">
+    <!-- <img class="img_background" src="../static/me/me_top_background.jpeg"> -->
     <div class="menu_top_back">
       <div class="main_title">tianhj</div>
       <div class="menu_top_right_back">
@@ -149,6 +150,8 @@ export default {
     height: 200px;
     align-items: center;
     box-sizing: border-box;
+    padding: 0 20px;
+    padding-bottom: 20px;
     .content {
       font-size: 20px;
       color: #fff;
@@ -165,5 +168,6 @@ export default {
 .home_header_content_s {
     background-image:url("../static/me/me_top_background.jpeg");
     background-position: 50% 50%;
+    background-size:cover;
 }
 </style>

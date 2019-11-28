@@ -31,7 +31,7 @@
       <p class="section_title">联系博主</p>
       <ul>
         <li>
-          微博账号 ：<a href= "https://weibo.com/3079081013/profile">Forever_Stick_to</a>
+          微博账号 ：<a href= "https://weibo.com/3079081013" target="_blank">Forever_Stick_to</a>
         </li>
 
         <li>
@@ -42,12 +42,11 @@
           电子邮件：{{ email }}
         </li>
         <li>
-          微信公众号：<a href= "https://mp.weixin.qq.com/mp/qrcode?scene=10000005&size=102&__biz=MzIxNjQ4NDg0MA==&mid=2247483730&idx=1&sn=9bf27824a3c51eaf094f0cbd7f1c7bb5&send_time=">{{ weixinPublic }}</a> 
+          微信公众号：<a href= "https://mp.weixin.qq.com/mp/qrcode?scene=10000005&size=102&__biz=MzIxNjQ4NDg0MA==&mid=2247483730&idx=1&sn=9bf27824a3c51eaf094f0cbd7f1c7bb5&send_time=" target="_blank">{{ weixinPublic }}</a> 
         </li>
       </ul>
     </div>
-
-
+    <div class="bottom"></div>
   </div>
 </template>
 
@@ -59,7 +58,7 @@ export default {
   data() {
     return {
       userIntroduce:"田豪杰，2019年4月加入北京环球优路教育负责移动端iOS研发。曾就职北京大童保险销售服务有限公司技术部，曾在富腾集团技术部从事跨平台研发。有react-native, uni-app，vue，小程序，flutter 项目开发经验。",
-      weboLink:"https://weibo.com/3079081013/profile?topnav=1&wvr=6&is_all=1",
+      weboLink:"https://weibo.com/3079081013/profile?is_hot=1",
       weixinNumber:"t1689177720",
       weixinPublic:"HJ_Stick_to",
       email:"1689177720@qq.com"
@@ -71,7 +70,7 @@ export default {
 <style lang = "less" scoped>
 .me {
   .me_item {
-    margin: 30px;
+    margin: 20px;
     .section_title {
       color: #808080;
       font: 38px;
@@ -82,6 +81,9 @@ export default {
       font: 16px;
       margin: 20px;
     }
+  }
+  .bottom{
+    height: 60px;
   }
 }
 </style>
