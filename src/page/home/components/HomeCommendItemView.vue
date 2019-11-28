@@ -33,7 +33,7 @@ export default {
   flex-direction: column;
   justify-content: flex-start;
   align-items: flex-start;
-  padding: 30px 150px 0 30px;
+  padding: 30px 30px 0 30px;
   box-sizing: border-box;
 
   .item-content {
