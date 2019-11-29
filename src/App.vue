@@ -1,51 +1,54 @@
 <template>
   <div id="app" class="fillcontain">
-    <HomeHeaderView  v-on:itemClickEvent = "itemClickEvent" :index = "getCurrentIndex" />
+    <HomeHeaderView />
     <router-view></router-view>
   </div>
 </template>
 
 <script>
+import { mapActions } from 'vuex'
 import HomeHeaderView from "@/components/HomeHeaderView.vue";
 export default {
   components: {
     HomeHeaderView
   },
   methods: {
-    itemClickEvent(index){
-      this.currentIndex = index;
-    },
+    ...mapActions(['changePage']),
   },
   data() {
     return {
-      currentIndex : 1,
     }
   },
   computed: {
-    getCurrentIndex(){
-      return this.currentIndex;
-    }
   },
   mounted() {
+    
     let routerPath =  this.$router.history.current.path;
     console.log(this.$router);
+    let tempIndex = 0;
     switch (routerPath) {
       case "/":
-        this.currentIndex = 1;
+        tempIndex = 1;
+
         break;
       case "/home":
-         this.currentIndex = 1;
+        tempIndex = 1;
         break;
       case "/catalog":
-         this.currentIndex = 2;
+        tempIndex = 2;
         break;  
       case "/me":
-         this.currentIndex = 3;
+        tempIndex = 3;
+        break;
+      case "/detail":
+        tempIndex = 4;
         break;
       default:
-         this.currentIndex = 4;
+        tempIndex = 0;
+         this.currentIndex = 0;
         break;
     }
+    this.changePage(tempIndex);
   },
   created() {
   

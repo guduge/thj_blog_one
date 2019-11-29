@@ -1,5 +1,5 @@
 <template>
-  <div class="catalog_item_content_back">
+  <div class="catalog_item_content_back" @click="catalogItemClick">
     <span class="item-time">[{{ commendData.time }}]</span>
     <font v-if="commendData.mark" color="#EE0000">[置顶]</font>
     <span class="item-title"> {{ commendData.title }}</span>
@@ -18,7 +18,12 @@ export default {
     return {
       mcommendData: this.commendData
     };
-  }
+  },
+  methods: {
+      catalogItemClick(){
+          this.$router.push('/detail');
+      }
+  },
 };
 </script>
 

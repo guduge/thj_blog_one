@@ -20,81 +20,41 @@
     </div>
 
     <div class="content_back">
-      <div class="title" v-bind:class="{color_s:isShowSelect(3)}" >{{ getTitle }}</div>
-      <div class="content" v-bind:class="{color_s:isShowSelect(3)}" >{{ getContent }}</div>
+      <div class="title" v-bind:class="{color_s:isShowSelect(3)}" >{{ title }}</div>
+      <div class="content" v-bind:class="{color_s:isShowSelect(3)}" >{{ content }}</div>
     </div>
   </div>
 </template>
 
 <script>
+import { mapState, mapActions } from 'vuex'
+
 export default {
   name: "HelloWorld",
-  props: {
-    index: Number
-  },
   data() {
     return {
-      defaultIndex: 1
     };
   },
-  computed: {
-      getTitle() {
-      let tempTitle = "";
-      switch (this.index) {
-        case 1:
-          tempTitle = "tianhj";
-          break;
-        case 2:
-          tempTitle = "Navigation";
-          break;
-        case 3:
-          tempTitle = "About";
-          break;
-        default:
-          tempTitle = "tianhj";
-          break;
-      }
-      return tempTitle;
-    },
-    getContent() {
-      let tempContent = "Keep on going never give up";
-      switch (this.index) {
-        case 1:
-          tempContent = "Keep on going never give up";
-          break;
-        case 2:
-          tempContent = "Here is the information you need";
-          break;
-        case 3:
-          tempContent = "All things in their being are good for something";
-          break;
-        default:
-          tempContent = "Keep on going never give up";
-          break;
-      }
-      return tempContent;
-    }
-  },
+  computed: mapState({
+    // 箭头函数可使代码更简练
+    ...mapState(['defaultIndexM','title','content']),
+    // count: state => state.defaultIndex,
+  }),
+  
   methods: {
-
+    ...mapActions(['changePage']),
     isShowSelect(i) {
-      let currentIndex;
-      if (this.index) {
-        currentIndex = this.index;
-      } else {
-        currentIndex = this.defaultIndex;
-      }
-      return currentIndex == i;
+      return this.defaultIndexM == i;
     },
 
     itemClick(index, path) {
+      this.changePage(index);
       let routerPath = this.$router.history.current.path;
       if (path === routerPath) {
         return;
       }
       this.defaultIndex = index;
-      this.$emit("itemClickEvent", index);
-
+    //   this.$emit("itemClickEvent", index);
       switch (index) {
         case 1:
           this.$router.push("home");
