@@ -1,6 +1,7 @@
 <template>
   <div id="app" class="fillcontain">
     <HomeHeaderView />
+    <div>测试一下pauseVideoAll-------{{ pauseVideoAllTest }}</div>
     <router-view></router-view>
   </div>
 </template>
@@ -14,15 +15,19 @@ export default {
   },
   methods: {
     ...mapActions(['changePage']),
+    pauseVideoAll() {
+      this.pauseVideoAllTest = "pauseVideoAll"
+    }
   },
   data() {
     return {
+      pauseVideoAllTest:""
     }
   },
   computed: {
   },
   mounted() {
-    
+    window.pauseVideoAll = this.pauseVideoAll;
     let routerPath =  this.$router.history.current.path;
     console.log(this.$router);
     let tempIndex = 0;

@@ -7,7 +7,7 @@
         <div
           v-bind:class="{menu_top_right_item: true,menu_top_right_item_s:isShowSelect(1)}"
           @click="itemClick(1,'/home')"
-        >首页</div>
+        >首页1</div>
         <div
           v-bind:class="{menu_top_right_item: true,menu_top_right_item_s:isShowSelect(2)}"
           @click="itemClick(2,'/catalog')"
@@ -21,7 +21,7 @@
 
     <div class="content_back">
       <div class="title" v-bind:class="{color_s:isShowSelect(3)}" >{{ title }}</div>
-      <div class="content" v-bind:class="{color_s:isShowSelect(3)}" >{{ content }}</div>
+      <div class="content" v-bind:class="{color_s:isShowSelect(3)}" >{{ tempPlatForm }}</div>
     </div>
   </div>
 </template>
@@ -33,6 +33,7 @@ export default {
   name: "HelloWorld",
   data() {
     return {
+      tempPlatForm:""
     };
   },
   computed: mapState({
@@ -40,7 +41,10 @@ export default {
     ...mapState(['defaultIndexM','title','content']),
     // count: state => state.defaultIndex,
   }),
-  
+  mounted() {
+    let ua = navigator.userAgent.toLowerCase();
+    this.tempPlatForm = ua.toString();
+  },
   methods: {
     ...mapActions(['changePage']),
     isShowSelect(i) {
@@ -48,6 +52,14 @@ export default {
     },
 
     itemClick(index, path) {
+
+      // if (window.webkit.messageHandlers){
+      //     window.webkit.messageHandlers.iosEvent.postMessage("event");
+      // }
+      let ua = navigator.userAgent.toLowerCase();
+      console.log(ua);
+      
+
       this.changePage(index);
       let routerPath = this.$router.history.current.path;
       if (path === routerPath) {
