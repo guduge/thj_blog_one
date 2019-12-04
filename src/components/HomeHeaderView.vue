@@ -21,7 +21,7 @@
 
     <div class="content_back">
       <div class="title" v-bind:class="{color_s:isShowSelect(3)}" >{{ title }}</div>
-      <div class="content" v-bind:class="{color_s:isShowSelect(3)}" >{{ tempPlatForm }}</div>
+      <div class="content" v-bind:class="{color_s:isShowSelect(3)}" >{{ content }}</div>
     </div>
   </div>
 </template>
