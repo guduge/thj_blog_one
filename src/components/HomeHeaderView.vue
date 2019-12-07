@@ -22,7 +22,9 @@
     <div class="content_back">
       <div class="title" v-bind:class="{color_s:isShowSelect(3)}" >{{ title }}</div>
       <div class="content" v-bind:class="{color_s:isShowSelect(3)}" >{{ content }}</div>
+      <el-button v-show="isShowSelect(1)" type="primary" @click="testClick()"> element </el-button>
     </div>
+    
   </div>
 </template>
 
@@ -36,11 +38,11 @@ export default {
       tempPlatForm:""
     };
   },
-  computed: mapState({
+  computed: {
     // 箭头函数可使代码更简练
     ...mapState(['defaultIndexM','title','content']),
     // count: state => state.defaultIndex,
-  }),
+  },
   mounted() {
     let ua = navigator.userAgent.toLowerCase();
     this.tempPlatForm = ua.toString();
@@ -51,21 +53,13 @@ export default {
       return this.defaultIndexM == i;
     },
 
-    itemClick(index, path) {
-
-      // if (window.webkit.messageHandlers){
-      //     window.webkit.messageHandlers.iosEvent.postMessage("event");
-      // }
-      let ua = navigator.userAgent.toLowerCase();
-      console.log(ua);
-      
+    itemClick(index, path) {    
 
       this.changePage(index);
       let routerPath = this.$router.history.current.path;
       if (path === routerPath) {
         return;
       }
-      this.defaultIndex = index;
     //   this.$emit("itemClickEvent", index);
       switch (index) {
         case 1:
@@ -80,6 +74,11 @@ export default {
         default:
           break;
       }
+    },
+    
+    testClick(){
+      this.changePage(5);
+      this.$router.push("test");
     }
   }
 };

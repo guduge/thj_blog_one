@@ -1,58 +1,73 @@
 <template>
   <div id="app" class="fillcontain">
-    <HomeHeaderView />
+    <div v-if="showHeader">
+      <HomeHeaderView />
+    </div>
+
     <router-view></router-view>
   </div>
 </template>
 
 <script>
-import { mapActions } from 'vuex'
+import { mapActions, mapState } from "vuex";
 import HomeHeaderView from "@/components/HomeHeaderView.vue";
 export default {
   components: {
     HomeHeaderView
   },
   methods: {
-    ...mapActions(['changePage']),
+    ...mapActions(["changePage"]),
+    changePageOb() {
+      window.pauseVideoAll = this.pauseVideoAll;
+      let routerPath = this.$router.history.current.path;
+      console.log(this.$router);
+      let tempIndex = 0;
+      switch (routerPath) {
+        case "/":
+          tempIndex = 1;
+
+          break;
+        case "/home":
+          tempIndex = 1;
+          break;
+        case "/catalog":
+          tempIndex = 2;
+          break;
+        case "/me":
+          tempIndex = 3;
+          break;
+        case "/detail":
+          tempIndex = 4;
+          break;
+        case "/test":
+          tempIndex = 5;
+          break;
+        default:
+          tempIndex = 6;
+          this.currentIndex = 6;
+          break;
+      }
+      this.changePage(tempIndex);
+    }
   },
   data() {
-    return {
-    }
+    return {};
   },
   computed: {
+    // 箭头函数可使代码更简练
+    ...mapState(["defaultIndexM"]),
+    showHeader() {
+      return this.defaultIndexM < 5;
+    }
+    // count: state => state.defaultIndex,
   },
   mounted() {
-    window.pauseVideoAll = this.pauseVideoAll;
-    let routerPath =  this.$router.history.current.path;
-    console.log(this.$router);
-    let tempIndex = 0;
-    switch (routerPath) {
-      case "/":
-        tempIndex = 1;
-
-        break;
-      case "/home":
-        tempIndex = 1;
-        break;
-      case "/catalog":
-        tempIndex = 2;
-        break;  
-      case "/me":
-        tempIndex = 3;
-        break;
-      case "/detail":
-        tempIndex = 4;
-        break;
-      default:
-        tempIndex = 0;
-         this.currentIndex = 0;
-        break;
-    }
-    this.changePage(tempIndex);
+    this.changePageOb();
   },
-  created() {
-  
-  },
+  created() {},
+  updated() {
+    this.changePageOb();
+  }
 };
 </script>
 

@@ -13,7 +13,6 @@ new Vue({
   router:router,
   store,
   render: h => h(App),
-  comments: { App }
 }).$mount('#app')
 
 // new Vue({

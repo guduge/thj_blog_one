@@ -4,6 +4,8 @@ import Home from '@/page/home/HomeCommend.vue'
 import Catalog from '@/page/catalog/Catalog.vue'
 import Me from '@/page/me/Me.vue'
 import Detail from '@/page/detail/Detail.vue'
+import ElementTest from '@/page/elementtest/ElementTest.vue'
+import ContainerTest from '@/page/elementtest/ContainerTest.vue'
 
 Vue.use(Router)
 
@@ -34,6 +36,16 @@ const routes = [
         path: "/detail",
         name: "detail",
         component: Detail
+    },
+    {
+        path: "/test",
+        name: "test",
+        component: ElementTest
+    },
+    {
+        path: "/container_test",
+        name: "container_test",
+        component: ContainerTest
     },
 
 ]
