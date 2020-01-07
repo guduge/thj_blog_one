@@ -1,5 +1,6 @@
 <template>
-  <div class="home_header_content"  v-bind:class="{home_header_content_s:isShowSelect(3)}">
+<div class="layout-box">
+<div class="home_header_content"  v-bind:class="{home_header_content_s:isShowSelect(3)}">
     <!-- <img class="img_background" src="../static/me/me_top_background.jpeg"> -->
     <div class="menu_top_back">
       <div class="main_title">tianhj</div>
@@ -25,7 +26,11 @@
       <el-button v-show="isShowSelect(1)" type="primary" @click="testClick()"> element </el-button>
     </div>
     
+    
   </div>
+  <router-view></router-view>
+</div>
+  
 </template>
 
 <script>
@@ -86,8 +91,8 @@ export default {
 
 
 <style  lang="less" scoped>
-.home_header_content {
-
+.layout-box{
+.home_header_content {  
     background-color: rgba(51, 51, 51, 1);
   .menu_top_back {
     display: flex;
@@ -141,4 +146,7 @@ export default {
     background-position: 50% 50%;
     background-size:cover;
 }
+}
+
+
 </style>

@@ -6,6 +6,7 @@ import Me from '@/page/me/Me.vue'
 import Detail from '@/page/detail/Detail.vue'
 import ElementTest from '@/page/elementtest/ElementTest.vue'
 import ContainerTest from '@/page/elementtest/ContainerTest.vue'
+import HomeHeaderView from "@/components/HomeHeaderView.vue";
 
 Vue.use(Router)
 
@@ -14,28 +15,54 @@ Vue.use(Router)
 const routes = [
 	{
         path: '/',
-        name: 'home',
-		component: Home
-    },
-    {
+        component: HomeHeaderView,
+        children: [{
+          path: '',
+          name: 'home',
+          component: Home
+        }]
+      },
+      {
         path: '/home',
-        name: 'home',
-		component: Home
-    },
+        component: HomeHeaderView,
+        children: [{
+          path: '',
+          name: 'home',
+          component: Home
+        }]
+      },
     {
         path: "/catalog",
-        name: "catalog",
-        component: Catalog
+        component: HomeHeaderView,
+        children:[
+            {
+                path: '',
+                name: 'catalog',
+                component: Catalog
+            }
+        ]
     },
     {
         path: "/me",
-        name: "me",
-        component: Me
+        component: HomeHeaderView,
+        children:[
+            {
+                path: '',
+                name: 'me',
+                component: Me
+            }
+        ]
     },
     {
         path: "/detail",
-        name: "detail",
-        component: Detail
+        component: HomeHeaderView,
+        children:[
+            {
+                path: '',
+                name: 'detail',
+                component: Detail
+            }
+        ]
     },
     {
         path: "/test",
@@ -50,5 +77,6 @@ const routes = [
 
 ]
 export default new Router({
+    mode: 'history',
 	routes,
 })

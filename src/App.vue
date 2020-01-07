@@ -1,19 +1,20 @@
 <template>
   <div id="app" class="fillcontain">
-    <div v-if="showHeader">
+    <!-- <div v-if="showHeader">
       <HomeHeaderView />
-    </div>
-
-    <router-view></router-view>
+    </div>-->
+    <keep-alive>
+      <router-view></router-view>
+    </keep-alive>
   </div>
 </template>
 
 <script>
 import { mapActions, mapState } from "vuex";
-import HomeHeaderView from "@/components/HomeHeaderView.vue";
+// import HomeHeaderView from "@/components/HomeHeaderView.vue";
 export default {
   components: {
-    HomeHeaderView
+    // HomeHeaderView
   },
   methods: {
     ...mapActions(["changePage"]),

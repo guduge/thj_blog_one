@@ -1,8 +1,8 @@
 <template>
   <div class="commend_body">
-    <div class="commend_content" v-for="(value, key) in commends" :key="key">
-      <HomeCommendItem :commendData="value" />
-    </div>
+      <div class="commend_content" v-for="(value, key) in commends" :key="key">
+        <HomeCommendItem :commendData="value" />
+      </div>
     <div class="home-bottom">
       © 2019 tianhj.com 版权所有
       <a
@@ -18,7 +18,7 @@ import HomeCommendItem from "./components/HomeCommendItemView.vue";
 export default {
   name: "HomeCommend",
   components: {
-    HomeCommendItem
+    HomeCommendItem,
   },
   data() {
     return {
@@ -99,6 +99,7 @@ export default {
 .commend_body {
   display: flex;
   width: 100%;
+  height: 100%;
   padding-top: 30px;
   background-color: fff;
   flex-direction: column;
